@@ -6,7 +6,7 @@
 /*   By: minsunki <minsunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:32:21 by minsunki          #+#    #+#             */
-/*   Updated: 2022/04/05 15:08:14 by minsunki         ###   ########seoul.kr  */
+/*   Updated: 2022/04/07 13:25:41 by minsunki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 namespace ft
 {
-	template <typename _Tp, typename _Alloc = std::allocator<_Tp> >
+	template <typename T, typename Alloc = std::allocator<T> >
 	class vector
 	{
 		public:
-			typedef _Tp											value_type;
-			typedef _Alloc										allocator_type;
+			typedef T											value_type;
+			typedef Alloc										allocator_type;
 			typedef typename allocator_type::reference			reference;
 			typedef typename allocator_type::const_reference	const_reference;
 			typedef typename allocator_type::pointer			pointer;
@@ -86,26 +86,26 @@ namespace ft
 
 			allocator_type	get_allocator() const;
 
-			template <class T, class Alloc>
-			friend bool 	operator== (const vector<T,Alloc>& lhs,
-										const vector<T,Alloc>& rhs);
-			template <class T, class Alloc>
-			friend bool		operator!= (const vector<T,Alloc>& lhs,
-										const vector<T,Alloc>& rhs);
-			template <class T, class Alloc>
-			friend bool		operator< (const vector<T,Alloc>& lhs,
-										const vector<T,Alloc>& rhs);
-			template <class T, class Alloc>
-			friend bool		operator<= (const vector<T,Alloc>& lhs,
-										const vector<T,Alloc>& rhs);
-			template <class T, class Alloc>
-			friend bool		operator> (const vector<T,Alloc>& lhs,
-										const vector<T,Alloc>& rhs);
-			template <class T, class Alloc>
-			friend bool		operator>= (const vector<T,Alloc>& lhs,
-										const vector<T,Alloc>& rhs);
-			template <class T, class Alloc>
-			friend void		swap(vector<T,Alloc>& x, vector<T,Alloc>& y);
+			// template <class T, class Alloc>
+			// friend bool 	operator== (const vector<T,Alloc>& lhs,
+			// 							const vector<T,Alloc>& rhs);
+			// template <class T, class Alloc>
+			// friend bool		operator!= (const vector<T,Alloc>& lhs,
+			// 							const vector<T,Alloc>& rhs);
+			// template <class T, class Alloc>
+			// friend bool		operator< (const vector<T,Alloc>& lhs,
+			// 							const vector<T,Alloc>& rhs);
+			// template <class T, class Alloc>
+			// friend bool		operator<= (const vector<T,Alloc>& lhs,
+			// 							const vector<T,Alloc>& rhs);
+			// template <class T, class Alloc>
+			// friend bool		operator> (const vector<T,Alloc>& lhs,
+			// 							const vector<T,Alloc>& rhs);
+			// template <class T, class Alloc>
+			// friend bool		operator>= (const vector<T,Alloc>& lhs,
+			// 							const vector<T,Alloc>& rhs);
+			// template <class T, class Alloc>
+			// friend void		swap(vector<T,Alloc>& x, vector<T,Alloc>& y);
 
 		private:
 			allocator_type	_alloc;
@@ -341,44 +341,44 @@ const
 
 }
 /* NON MEMBER FUNCTION OVERLOADS */
-template <class T, class Alloc>
-bool	operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+template <class _T, class _A>
+bool	operator== (const vector<_T,_A>& lhs, const vector<_T,_A>& rhs)
 {
 	return (0);
 }
 
-template <class T, class Alloc>
-bool	operator!= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+template <class _T, class _A>
+bool	operator!= (const vector<_T,_A>& lhs, const vector<_T,_A>& rhs)
 {
 	return (0);
 }
 
-template <class T, class Alloc>
-bool	operator< (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+template <class _T, class _A>
+bool	operator< (const vector<_T,_A>& lhs, const vector<_T,_A>& rhs)
 {
 	return (0);
 }
 
-template <class T, class Alloc>
-bool	operator<= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+template <class _T, class _A>
+bool	operator<= (const vector<_T,_A>& lhs, const vector<_T,_A>& rhs)
 {
 	return (0);
 }
 
-template <class T, class Alloc>
-bool	operator> (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+template <class _T, class _A>
+bool	operator> (const vector<_T,_A>& lhs, const vector<_T,_A>& rhs)
 {
 	return (0);
 }
 
-template <class T, class Alloc>
-bool	operator>= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+template <class _T, class _A>
+bool	operator>= (const vector<_T,_A>& lhs, const vector<_T,_A>& rhs)
 {
 	return (0);
 }
 
-template <class T, class Alloc>
-void	swap(vector<T,Alloc>& x, vector<T,Alloc>& y)
+template <class _T, class _A>
+void	swap(vector<_T,_A>& x, vector<_T,_A>& y)
 {
 	
 }

@@ -6,7 +6,7 @@
 /*   By: minsunki <minsunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:00:28 by minsunki          #+#    #+#             */
-/*   Updated: 2022/04/06 19:36:59 by minsunki         ###   ########seoul.kr  */
+/*   Updated: 2022/04/07 13:29:36 by minsunki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,31 +35,34 @@ namespace ft
 	struct bidirectional_iterator_tag: public forward_iterator_tag {};
 	struct random_access_iterator_tag: public bidirectional_iterator_tag {};
 
-	template <typename Iterator> struct iterator_traits
+	template <typename Iterator> class iterator_traits
 	{
-		typedef typename Iterator::iterator_category	iterator_category;
-		typedef typename Iterator::value_type			value_type;
-		typedef typename Iterator::difference_type		difference_type;
-		typedef typename Iterator::pointer				pointer;
-		typedef typename Iterator::reference			reference;
+		public:
+			typedef typename Iterator::iterator_category	iterator_category;
+			typedef typename Iterator::value_type			value_type;
+			typedef typename Iterator::difference_type		difference_type;
+			typedef typename Iterator::pointer				pointer;
+			typedef typename Iterator::reference			reference;
 	};
 
-	template <typename _Tp> struct iterator_traits<_Tp*>
+	template <typename T> class iterator_traits<T*>
 	{
-		typedef random_access_iterator_tag				iterator_category;
-		typedef _Tp										value_type;
-		typedef ptrdiff_t								difference_type;
-		typedef _Tp*									pointer;
-		typedef _Tp&									reference;
+		public:
+			typedef random_access_iterator_tag				iterator_category;
+			typedef T										value_type;
+			typedef ptrdiff_t								difference_type;
+			typedef T*										pointer;
+			typedef T&										reference;
 	};
 
-	template <typename _Tp> struct iterator_traits<const _Tp*>
+	template <typename T> class iterator_traits<const T*>
 	{
-		typedef ft::random_access_iterator_tag			iterator_category;
-		typedef _Tp										value_type;
-		typedef ptrdiff_t								difference_type;
-		typedef const _Tp*								pointer;
-		typedef const _Tp&								reference;
+		public:
+			typedef random_access_iterator_tag				iterator_category;
+			typedef T										value_type;
+			typedef ptrdiff_t								difference_type;
+			typedef const T*								pointer;
+			typedef const T&								reference;
 	};
 
 
@@ -68,16 +71,16 @@ namespace ft
 /* iterator implementation */
 namespace ft
 {
-	template <typename _Category, typename _Tp, typename _Distance = ptrdiff_t,
-			typename _Pointer = _Tp*, typename _Reference = _Tp&>
+	template <typename Category, typename T, typename Distance = ptrdiff_t,
+			typename Pointer = T*, typename Reference = T&>
 	class iterator
 	{
 		public:
-			typedef _Category	iterator_category;
-			typedef _Tp			value_type;
-			typedef _Distance	difference_type;
-			typedef _Pointer	pointer;
-			typedef _Reference	reference;
+			typedef Category	iterator_category;
+			typedef T			value_type;
+			typedef Distance	difference_type;
+			typedef Pointer		pointer;
+			typedef Reference	reference;
 	}; 
 }
 
@@ -85,10 +88,10 @@ namespace ft
 namespace ft
 {
 	template<class InputIterator>
-	typename ft::iterator_traits<InputIterator>::difference_type
+	typename iterator_traits<InputIterator>::difference_type
 		distance (InputIterator first, InputIterator last)
 	{
-		typename ft::iterator_traits<InputIterator>::difference_type ret = 0;
+		typename iterator_traits<InputIterator>::difference_type ret = 0;
 		while (first != last)
 		{
 			first++;
